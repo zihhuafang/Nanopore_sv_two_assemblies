@@ -12,6 +12,7 @@ svim
 pbsv
 sniffles
 
+others:
 survivor
 bcftools
 samtools
