@@ -1,0 +1,11 @@
+.snakemake/*
+loglsf/*
+UCD/*
+Angus/*
+all_reads/*
+analysis/*
+bin/*
+srs_bam/*
+nanocomp.sh
+nanoplot.sh
+

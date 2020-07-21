@@ -1,0 +1,26 @@
+resources:
+    genomedir: /nfs/nas12.ethz.ch/fs1201/green_groups_tg_public/data/fang/pacbio_snake/ref
+    fastqdir: /nfs/nas12.ethz.ch/fs1201/green_groups_tg_public/data/fang/Nanopore/bov_168/fastq_pass
+    outdir: /nfs/nas12.ethz.ch/fs1201/green_groups_tg_public/data/fang/Nanopore/sv_two_assembly
+
+tools:
+    NGMLR: ./bin/ngmlr 
+    SNIFFLES: ./bin//sniffles
+    MINIMAP2: ./bin/minimap2
+    BCFTOOLS: ./bin/bcftools
+    PICARD: ./bin/picard.jar
+    SURVIVOR: ./bin/SURVIVOR
+    SVIPER: ./bin/sviper
+# Sample name
+sample_name: "bov_168"
+
+
+#run as
+##dry run with conda and enviroment modules
+##snakemake --jobs 100 --latency-wait 60 -nrp --use-conda --use-envmodules --cluster-config cluster.json --cluster "bsub -J {cluster.jobname} -n {cluster.ncore} -W {cluster.jobtime} -o {cluster.logi} -R \"rusage[mem={cluster.memo}]\""
+
+#w/o conda
+#snakemake --jobs 1000 --latency-wait 60 -rp --cluster-config cluster.json --cluster "bsub -J {cluster.jobname} -n {cluster.ncore} -W {cluster.jobtime} -o {cluster.logi} -R \"rusage[mem={cluster.memo}]\""
+#
+##visulize work graph: module load graphviz/2.40.1
+##snakemake --rulegraph | dot -Tpng > rulegraph.png
