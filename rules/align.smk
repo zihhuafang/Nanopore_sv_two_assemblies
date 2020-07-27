@@ -17,7 +17,7 @@ sample = "sv_sample"
 if "sample_name" in config:
     sample = config['sample_name']
 
-#align reads from individual sequencing runs to different genome assembly using ngmlr
+#align reads from individual sequencing runs to different genome assemblies using ngmlr
 rule ngmlr_aln:
     input:
         fastq = FASTQDIR + "/{movie}.fastq.gz",
@@ -41,7 +41,7 @@ rule ngmlr_aln:
                 samtools sort -@ {threads} -T $TMPDIR > {output}
         """
 
-#align reads from individual sequencing runs to different genome assembly using minimap2
+#align reads from individual sequencing runs to different genome assemblies using minimap2
 rule pbmm2_aln:
     input:
         fastq = FASTQDIR + "/{movie}.fastq.gz",
