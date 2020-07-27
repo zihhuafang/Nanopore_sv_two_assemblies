@@ -17,8 +17,8 @@ sample = "sv_sample"
 if "sample_name" in config:
     sample = config['sample_name']
 
-
-checkpoint ngmlr_aln:
+#align reads from individual sequencing runs to different genome assembly using ngmlr
+rule ngmlr_aln:
     input:
         fastq = FASTQDIR + "/{movie}.fastq.gz",
         ref = GENOMEDIR + "/{ref}_ref.fa"
@@ -41,7 +41,8 @@ checkpoint ngmlr_aln:
                 samtools sort -@ {threads} -T $TMPDIR > {output}
         """
 
-checkpoint pbmm2_aln:
+#align reads from individual sequencing runs to different genome assembly using minimap2
+rule pbmm2_aln:
     input:
         fastq = FASTQDIR + "/{movie}.fastq.gz",
         ref = GENOMEDIR + "/{ref}_ref.fa"
@@ -66,6 +67,7 @@ checkpoint pbmm2_aln:
          | samtools sort -@ {threads} -T $TMPDIR > {output}
         """
 
+#merge bam files
 rule merge_bam:
     input:
         lambda wildcards: expand(OUTDIR + "/{{ref}}/{{aligner}}/alignment/aln_{movie}.bam",movie=MOVIES)
