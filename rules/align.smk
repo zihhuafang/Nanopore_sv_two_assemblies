@@ -30,10 +30,8 @@ rule ngmlr_aln:
     threads:
         20
     envmodules:
-        #"gcc/4.8.2",
-        #"samtools/1.8"
-        "gcc/4.8.5",
-        "samtools/1.10"
+        "gcc/4.8.2",
+        "samtools/1.8"
     shell:
         """
         zcat {input.fastq} | \
@@ -54,10 +52,8 @@ rule pbmm2_aln:
         minimap2 = config["tools"]["MINIMAP2"],
         sample = config['sample_name']
     envmodules:
-        #"gcc/4.8.2",
-        #"samtools/1.8"
-        "gcc/4.8.5",
-        "samtools/1.10"
+        "gcc/4.8.2",
+        "samtools/1.8"
     shell:
         """
         {params.minimap2} -ax map-ont --MD --eqx -L -O 5,56 -E 4,1 -B 5 \
@@ -79,10 +75,8 @@ rule merge_bam:
         BAI = protected(OUTDIR + "/{ref}/{aligner}/alignment/{sample}_merge.bam.bai")
     threads: 10
     envmodules:
-        #"gcc/4.8.2",
-        #"samtools/1.8"
-        "gcc/4.8.5",
-        "samtools/1.10"
+        "gcc/4.8.2",
+        "samtools/1.8"
     shell:
         """
         samtools merge -@ {threads} - {input} | \
