@@ -21,4 +21,6 @@ vep
 
 Conda environment files containing the some dependencies can be found in the envs directory. These can be automatically installed and managed by providing the --use-conda argument to snakemake: snakemake --use-conda ....
 
+
+# The overview of the pipeline
 ![Image of graph](https://github.com/zihhuafang/Nanopore_sv_two_assemblies/blob/master/rulegraph.png)
