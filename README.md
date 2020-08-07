@@ -1,6 +1,6 @@
 # Nanopore_sv_two_assemblies
 
-This is a snakemake pipeline for aligning cattle Oxford Nanopore data to two cattle genome assembiles (ARS-UCD1.2 and UOA_Angus) and calling structural variants using different sv callers. The output is the high confidance sv set. 
+This is a snakemake pipeline for aligning cattle Oxford Nanopore data to two cattle genome assembiles (ARS-UCD1.2 and UOA_Angus) using minimap2 and ngmlr and calling structural variants using different sv callers. The output is the high confidance sv set. 
 
 # Dependencies
 aligners:
